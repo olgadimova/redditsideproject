@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-  // first, we sett all necessary data for api call such as before, after, count
+  // first, we set all necessary data for api call such as before, after, count
   // also I set currentPageIndex(to check if it's the first page and disable previous click) and items array 
   const [ items, setItems ] = useState([]);
   const [ before, setBefore ] = useState(null);
@@ -73,21 +73,21 @@ function App() {
       <nav className="navbar bg-dark">
           <h6 className="text-white mb-0 shadow-sm">Reddit Coding Project</h6>
       </nav>
-        <div className="row mx-0 px-2 py-2 cards-container">
-          {items.map((el, i) => {
-            return (
-              <a className="bg-dark single-card mx-auto mb-2" key={i}
-              href={`https://www.reddit.com/r/Images/comments/${el.data.id}/${el.data.title}/`}
-              style={{backgroundImage: `url(${el.data.url})`}}>
-              <div className="single-card-body">
-                <div className="col-8">{el.data.title}</div>
-                <div className="col-4">{el.data.score} likes</div>
-              </div>
-            </a>
-            )
-          })
-          }
-        </div>
+      <div className="row mx-0 px-2 py-2 cards-container">
+        {items.map((el, i) => {
+          return (
+            <a className="bg-dark single-card mx-auto mb-2" key={i}
+            href={`https://www.reddit.com/r/Images/comments/${el.data.id}/${el.data.title}/`}
+            style={{backgroundImage: `url(${el.data.url})`}}>
+            <div className="single-card-body">
+              <div className="col-8">{el.data.title}</div>
+              <div className="col-4">{el.data.score} likes</div>
+            </div>
+          </a>
+          )
+        })
+        }
+      </div>
       <div className="buttons-row bg-dark">
           <button className={`btn btn-info mr-2 ${currentPageIndex === 0 ? 'disabled' : ''}`} value="previous" onClick={(e) => changePage(e)}>Previous</button>
           <button className="btn btn-info" value="next" onClick={(e) => changePage(e)}>Next</button>
